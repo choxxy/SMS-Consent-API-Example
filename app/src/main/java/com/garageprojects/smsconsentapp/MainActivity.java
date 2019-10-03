@@ -115,5 +115,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //to prevent IntentReceiver leakage unregister
+        unregisterReceiver(smsVerificationReceiver);
+    }
 
 }
